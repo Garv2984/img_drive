@@ -21,7 +21,7 @@ const ImageCard = ({ image, onClick }) => {
     });
   };
 
-  const imageUrl = `${API_BASE_URL}${image.path}`;
+  const imageUrl = image.path.startsWith('http') ? image.path : `${API_BASE_URL}${image.path}`;
 
   return (
     <div className="image-card glass-panel" onClick={() => onClick(image)}>

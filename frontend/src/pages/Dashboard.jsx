@@ -288,7 +288,7 @@ const Dashboard = () => {
           </button>
           <div className="zoom-content" onClick={(e) => e.stopPropagation()}>
             <img
-              src={`${API_BASE_URL}${zoomedImage.path}`}
+              src={zoomedImage.path.startsWith('http') ? zoomedImage.path : `${API_BASE_URL}${zoomedImage.path}`}
               alt={zoomedImage.name}
             />
           </div>
