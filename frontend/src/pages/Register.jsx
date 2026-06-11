@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserPlus, Lock, User, Eye, EyeOff } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const Register = ({ onAuthSuccess }) => {
   const [username, setUsername] = useState('');
@@ -33,7 +34,7 @@ const Register = ({ onAuthSuccess }) => {
 
     try {
       setLoading(true);
-      const res = await fetch('http://localhost:5000/api/auth/register', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

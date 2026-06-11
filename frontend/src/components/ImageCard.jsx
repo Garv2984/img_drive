@@ -1,8 +1,8 @@
 import React from 'react';
 import { Image as ImageIcon, Calendar } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const ImageCard = ({ image, onClick }) => {
-  const API_BASE_URL = 'http://localhost:5000';
 
   const formatSize = (bytes) => {
     if (bytes === 0 || bytes === undefined || bytes === null) return '0 Bytes';

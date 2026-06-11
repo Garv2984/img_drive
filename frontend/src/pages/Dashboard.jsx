@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Plus, FolderPlus, Upload, Search, HardDrive, AlertCircle, X, ChevronRight, CornerDownRight } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 import FolderCard from '../components/FolderCard';
 import ImageCard from '../components/ImageCard';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -31,7 +32,7 @@ const Dashboard = () => {
       setError('');
       
       const parentQuery = folderId ? `?parent=${folderId}` : '';
-      const res = await fetch(`http://localhost:5000/api/folders/contents${parentQuery}`, {
+      const res = await fetch(`${API_BASE_URL}/api/folders/contents${parentQuery}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -56,7 +57,7 @@ const Dashboard = () => {
   // Fetch all user folders to build breadcrumbs and hierarchy
   const fetchAllFolders = useCallback(async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/folders/all', {
+      const res = await fetch(`${API_BASE_URL}/api/folders/all`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -81,7 +82,7 @@ const Dashboard = () => {
   const handleCreateFolder = async (folderName) => {
     try {
       setError('');
-      const res = await fetch('http://localhost:5000/api/folders', {
+      const res = await fetch(`${API_BASE_URL}/api/folders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -118,7 +119,7 @@ const Dashboard = () => {
       formData.append('folderId', currentFolderId);
     }
 
-    const res = await fetch('http://localhost:5000/api/images/upload', {
+    const res = await fetch(`${API_BASE_URL}/api/images/upload`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -287,7 +288,7 @@ const Dashboard = () => {
           </button>
           <div className="zoom-content" onClick={(e) => e.stopPropagation()}>
             <img
-              src={`http://localhost:5000${zoomedImage.path}`}
+              src={`${API_BASE_URL}${zoomedImage.path}`}
               alt={zoomedImage.name}
             />
           </div>
