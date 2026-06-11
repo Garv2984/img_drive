@@ -47,8 +47,8 @@ cd backend
 Create a `.env` file:
 ```env
 PORT=5000
-MONGODB_URI=mongodb://127.0.0.1:27017/dobbyads_assignment
-JWT_SECRET=super_secret_key_for_dobbyads_assignment_token_validation_2026
+MONGODB_URI=<your mongodb uri>
+JWT_SECRET=
 ```
 Install dependencies and run:
 ```bash
@@ -94,30 +94,3 @@ This ensures that any change in an image nested deep down is instantly reflected
 
 ---
 
-## 🌐 Deployment Instructions
-
-### Backend Deployment (e.g., Render)
-1. Sign up on [Render](https://render.com/).
-2. Click **New** > **Web Service**.
-3. Connect your GitHub repository.
-4. Set the following details:
-   - **Environment**: `Node`
-   - **Build Command**: `cd backend && npm install`
-   - **Start Command**: `cd backend && npm start`
-5. Under **Environment Variables**, add:
-   - `PORT`: `10000` (or leave default)
-   - `MONGODB_URI`: Connect to a free MongoDB Atlas cluster.
-   - `JWT_SECRET`: A long secure random string.
-6. Set the Web Service to public.
-
-### Frontend Deployment (e.g., Vercel)
-1. Sign up on [Vercel](https://vercel.com/).
-2. Import your GitHub repository.
-3. In the configuration page, set:
-   - **Framework Preset**: `Vite`
-   - **Root Directory**: `frontend`
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-4. Click **Deploy**. Vercel will automatically host your static assets.
-
-*(Note: Ensure the frontend URL references the deployed backend URL instead of `http://localhost:5000` by changing the base URL inside the frontend components or updating environment variables).*
